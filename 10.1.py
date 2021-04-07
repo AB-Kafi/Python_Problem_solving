@@ -10,8 +10,11 @@ class Cone:
         self.ls = []
 
     def add_scoop(self,*args):
-        for value in args:
-           self.ls.append(value)
+        for pos , value in enumerate(args):
+            if pos == 3:
+                break
+            self.ls.append(value)
+
 
     def pf(self):
         for i in self.ls:
@@ -20,8 +23,16 @@ class Cone:
 ic1 = Scoop("chocolate")
 ic2 = Scoop("vanila")
 ic3 = Scoop("mint")
-ls = [ic1, ic2, ic3]
+ic4 = Scoop("mix")
+ls = [ic1, ic2, ic3, ic4]
 
-cone = Cone()
-cone.add_scoop(ic1,ic2,ic3)
-cone.pf()
+class BigCone(Cone):
+    def add_scoop(self, *args):
+        for pos, value in enumerate(args):
+            if pos == 5:
+                break
+            self.ls.append(value)
+
+bcon = BigCone()
+bcon.add_scoop(ic1,ic2,ic3,ic4)
+bcon.pf()
